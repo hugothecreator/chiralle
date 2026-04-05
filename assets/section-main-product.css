@@ -1493,309 +1493,502 @@ a.product__text {
   }
 }
 
+
 /* ============================================
-   CHIRALLE — Custom Product Page Design
-   Inspired by Saki editorial aesthetic
-   Black & white, clean, premium kitchen brand
+   CHIRALLE — Premium Product Page
+   Black / White editorial aesthetic
    ============================================ */
 
-/* --- Global font override for product page --- */
+/* --- Font application --- */
 product-info,
 product-info *,
 .product__info-wrapper,
 .product__info-wrapper * {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-/* --- Layout: full-bleed, no page padding on media --- */
-.product.grid {
+/* --- Break out of page-width to go full-bleed --- */
+product-info > .page-width {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+product-info .product.grid {
+  display: flex;
+  flex-direction: row;
   gap: 0;
-  align-items: start;
+  min-height: 90vh;
+  align-items: stretch;
 }
 
-@media screen and (min-width: 990px) {
-  .product--large:not(.product--no-media) .product__media-wrapper {
-    max-width: 58%;
-    width: calc(58% - 0px);
-    padding-right: 0;
-  }
-
-  .product--large:not(.product--no-media) .product__info-wrapper {
-    max-width: 42%;
-    width: calc(42% - 0px);
-    padding: 0 4rem 0 5rem;
-  }
+/* --- Left: image panel, edge-to-edge, no padding --- */
+product-info .product__media-wrapper {
+  flex: 0 0 56%;
+  max-width: 56%;
+  padding: 0;
+  background: #f5f5f3;
+  position: relative;
 }
 
-/* --- Product images: clean, no borders, no shadows --- */
-.product__media-item .media {
+/* Stack images cleanly with small gap */
+product-info .product__media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+product-info .product__media-item {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0;
+}
+
+product-info .product__media-item .media {
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  background: #f8f8f8;
+  background: #f5f5f3;
+  display: block;
+  width: 100%;
 }
 
-.product__media-list .product__media-item + .product__media-item {
-  margin-top: 6px;
+product-info .product__media-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
-/* --- Sticky info panel --- */
-.product__column-sticky {
-  top: 4rem;
+product-info .product__media-container {
+  padding: 0;
 }
 
-/* --- Vendor / brand text --- */
-.product__text.caption-with-letter-spacing {
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+/* --- Right: info panel --- */
+product-info .product__info-wrapper {
+  flex: 0 0 44%;
+  max-width: 44%;
+  padding: 5rem 5rem 5rem 6rem !important;
+  background: #ffffff;
+  border-left: 1px solid #ebebeb;
+  box-sizing: border-box;
+}
+
+product-info .product__info-container {
+  max-width: 46rem;
+}
+
+/* Sticky panel */
+product-info .product__column-sticky {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 4rem;
+  scrollbar-width: none;
+}
+product-info .product__column-sticky::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Spacing reset --- */
+product-info .product__info-container > * + * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* --- Vendor / brand label --- */
+product-info .product__text.caption-with-letter-spacing {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #888;
-  margin-bottom: 0.8rem;
+  color: #999;
+  margin: 0 0 1.4rem 0;
 }
 
 /* --- Product title --- */
-.product__title h1,
-.product__title .h1 {
-  font-family: 'Inter', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+product-info .product__title {
+  margin: 0 0 2.4rem 0;
+}
+
+product-info .product__title h1,
+product-info .product__title h2.h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
   color: #0a0a0a;
-  margin: 0 0 1.6rem 0;
+  margin: 0;
 }
 
-@media screen and (min-width: 750px) {
-  .product__title h1,
-  .product__title .h1 {
-    font-size: 3rem;
-  }
+/* --- Price block --- */
+product-info [id^="price-"] {
+  padding: 2rem 0;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  margin: 0 0 2.4rem 0;
 }
 
-/* --- Price --- */
-.price--large .price-item--regular,
-.price--large .price-item--sale {
-  font-family: 'Inter', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 600;
+product-info .price--large .price-item--regular,
+product-info .price--large .price-item--sale {
+  font-size: 2.4rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: #0a0a0a;
+  font-family: 'Inter', sans-serif;
 }
 
-.price--large .price-item--regular.price-item--last {
-  text-decoration: line-through;
-  color: #999;
-  font-weight: 400;
+product-info .price--large .price-item--regular.price-item--last {
   font-size: 1.6rem;
+  font-weight: 400;
+  color: #aaa;
+  text-decoration: line-through;
 }
 
-/* --- Divider lines between info blocks --- */
-.product__info-container > * + * {
-  margin: 2rem 0;
-  padding-top: 0;
+product-info .product__tax {
+  font-size: 1.15rem;
+  color: #aaa;
+  margin-top: 0.4rem;
 }
 
-#price-{{ section.id }} {
-  border-top: 1px solid #e8e8e8;
-  border-bottom: 1px solid #e8e8e8;
-  padding: 1.8rem 0;
+/* --- Variant picker label --- */
+product-info .product-form__input {
   margin: 0 0 2rem 0;
+  max-width: 100%;
 }
 
-/* --- Variant picker --- */
-.product-form__input .form__label {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+product-info .product-form__input > .form__label,
+product-info .product-form__input .form__label:first-child {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #0a0a0a;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  display: block;
 }
 
-/* Variant pills */
-.variant-input-wrapper .btn {
-  border-radius: 0 !important;
-  font-size: 1.2rem;
+/* Variant pills/buttons */
+product-info .variant-input-wrapper input + label,
+product-info .swatch__input + .swatch__label {
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
-  border: 1px solid #d0d0d0;
-  padding: 0.8rem 1.6rem;
-  transition: all 0.15s ease;
+  border: 1.5px solid #e0e0e0;
+  padding: 0.9rem 2rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  min-width: 5.6rem;
+  text-align: center;
 }
 
-.variant-input-wrapper input:checked + .btn,
-.variant-input-wrapper input:checked ~ label {
+product-info .variant-input-wrapper input:checked + label,
+product-info .swatch__input:checked + .swatch__label {
   border-color: #0a0a0a;
   background: #0a0a0a;
   color: #fff;
 }
 
 /* --- Quantity input --- */
-.quantity__input {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  border-radius: 0 !important;
-  border-color: #d0d0d0;
+product-info .quantity {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 0;
+  height: 5rem;
 }
 
-.quantity__button {
-  border-radius: 0 !important;
+product-info .quantity__input {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0a0a0a;
+}
+
+product-info .quantity__button {
+  border-radius: 0;
+  color: #0a0a0a;
 }
 
 /* --- Add to cart button --- */
-.product-form__submit {
+product-info .product-form__submit {
   font-family: 'Inter', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-  border: none !important;
-  border-radius: 0 !important;
-  height: 5.4rem;
-  min-height: 5.4rem;
-  transition: background 0.2s ease, opacity 0.2s ease;
+  background: #0a0a0a;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  height: 5.8rem;
+  min-height: 5.8rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.product-form__submit:hover:not([disabled]):not([aria-disabled='true']) {
-  background: #2a2a2a !important;
-  opacity: 1 !important;
+product-info .product-form__submit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.2s;
 }
 
-.product-form__submit[aria-disabled='true'],
-.product-form__submit[disabled] {
-  background: #c0c0c0 !important;
+product-info .product-form__submit:hover:not([disabled]):not([aria-disabled='true'])::after {
+  background: rgba(255,255,255,0.08);
+}
+
+product-info .product-form__submit[aria-disabled='true'],
+product-info .product-form__submit[disabled] {
+  background: #c8c8c8;
   cursor: not-allowed;
 }
 
-/* Dynamic checkout button */
-.shopify-payment-button__button--unbranded {
-  border-radius: 0 !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+product-info .product-form__buttons {
+  max-width: 100%;
 }
 
-/* --- Trust badges --- */
+/* Dynamic checkout */
+product-info .shopify-payment-button__button {
+  border-radius: 0 !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  min-height: 5.8rem;
+}
+
+/* --- Trust badges — inline, icon-forward --- */
 .chiralle-trust-badges {
   display: flex;
+  align-items: stretch;
+  border-top: 1px solid #ebebeb;
+  margin-top: 2.4rem;
+  padding-top: 2rem;
   gap: 0;
-  border: 1px solid #e8e8e8;
-  margin-top: 2rem;
 }
 
 .chiralle-trust-badge {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 1.4rem 0.8rem;
-  text-align: center;
-  border-right: 1px solid #e8e8e8;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-right: 1.6rem;
+  border-right: 1px solid #ebebeb;
+  margin-right: 1.6rem;
 }
 
 .chiralle-trust-badge:last-child {
   border-right: none;
+  margin-right: 0;
+  padding-right: 0;
 }
 
 .chiralle-trust-badge svg {
   color: #0a0a0a;
-  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.3rem;
 }
 
 .chiralle-trust-badge span {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #0a0a0a;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.chiralle-trust-badge small {
+  font-size: 1rem;
+  color: #888;
+  font-weight: 400;
   line-height: 1.3;
 }
 
 /* --- Product description --- */
-.product__description.rte {
-  font-family: 'Inter', sans-serif;
+product-info .product__description.rte {
   font-size: 1.45rem;
-  line-height: 1.7;
-  color: #444;
-  border-top: 1px solid #e8e8e8;
-  padding-top: 2rem;
-  margin-top: 2rem;
-}
-
-/* --- Accordion (collapsible tabs) --- */
-.product__accordion details summary {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border-top: 1px solid #e8e8e8;
-  padding: 1.6rem 0;
-}
-
-.product__accordion details[open] summary {
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.product__accordion .accordion__content {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.35rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #555;
-  padding: 1.6rem 0;
+  border-top: 1px solid #ebebeb;
+  padding-top: 2.4rem;
+  margin-top: 2.4rem;
 }
 
-.product__accordion .accordion__title {
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-
-/* --- Share button --- */
-.share-button {
-  border-top: 1px solid #e8e8e8;
-  padding-top: 1.6rem;
+/* --- Accordions --- */
+product-info .product__accordion {
+  border-top: 1px solid #ebebeb;
   margin-top: 0;
 }
 
-/* --- Tax/shipping note --- */
-.product__tax {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
-  color: #888;
+product-info .product__accordion details {
+  border-bottom: 1px solid #ebebeb;
 }
 
-/* --- Related products heading --- */
-.related-products h2 {
-  font-family: 'Inter', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+product-info .product__accordion details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 0;
+  cursor: pointer;
+  list-style: none;
+  gap: 1rem;
 }
 
-/* --- Mobile adjustments --- */
+product-info .product__accordion .summary__title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+product-info .product__accordion .accordion__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #0a0a0a;
+  margin: 0;
+  text-transform: none;
+}
+
+product-info .product__accordion .accordion__content {
+  font-size: 1.35rem;
+  line-height: 1.75;
+  color: #666;
+  padding: 0 0 1.8rem 0;
+}
+
+/* --- Share --- */
+product-info .share-button {
+  border-top: 1px solid #ebebeb;
+  padding-top: 1.8rem;
+  margin-top: 2rem;
+}
+
+/* --- Desktop responsive adjustments --- */
+@media screen and (min-width: 990px) {
+  product-info .product--large:not(.product--no-media) .product__media-wrapper {
+    max-width: 56%;
+    width: 56%;
+  }
+  product-info .product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: 44%;
+    width: 44%;
+  }
+}
+
+/* --- Tablet (750-989px) --- */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  product-info .product.grid {
+    min-height: auto;
+  }
+
+  product-info .product__media-wrapper {
+    flex: 0 0 52%;
+    max-width: 52%;
+  }
+
+  product-info .product__info-wrapper {
+    flex: 0 0 48%;
+    max-width: 48%;
+    padding: 3.5rem 3rem 3.5rem 3.5rem !important;
+  }
+}
+
+/* --- Mobile (under 750px) --- */
 @media screen and (max-width: 749px) {
-  .product__title h1,
-  .product__title .h1 {
+  product-info > .page-width {
+    padding: 0 !important;
+  }
+
+  product-info .product.grid {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  product-info .product__media-wrapper {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  product-info .product__info-wrapper {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    padding: 2.4rem 2rem 2.4rem 2rem !important;
+    border-left: none;
+    border-top: 1px solid #ebebeb;
+  }
+
+  product-info .product__title h1,
+  product-info .product__title h2.h1 {
     font-size: 2.2rem;
   }
 
+  product-info .price--large .price-item--regular,
+  product-info .price--large .price-item--sale {
+    font-size: 2rem;
+  }
+
+  product-info .product-form__submit {
+    height: 5.4rem;
+    min-height: 5.4rem;
+  }
+
   .chiralle-trust-badges {
-    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .chiralle-trust-badge {
+    padding-right: 1rem;
+    margin-right: 1rem;
+  }
+
+  .chiralle-trust-badge svg {
+    width: 1.6rem;
+    height: 1.6rem;
   }
 
   .chiralle-trust-badge span {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .product-form__submit {
-    height: 5rem;
-    min-height: 5rem;
+  .chiralle-trust-badge small {
+    display: none;
   }
+
+  product-info .product__media-list {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* --- Inventory indicator --- */
+product-info .product__inventory {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2d8a4e;
+  letter-spacing: 0.02em;
+}
+
+/* --- Hide the "a" tag title duplicate --- */
+product-info .product__title > a {
+  display: none;
+}
+
+/* --- Volume pricing --- */
+product-info .volume-pricing-note {
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: -0.8rem;
 }
