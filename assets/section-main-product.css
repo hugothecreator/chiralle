@@ -1492,3 +1492,310 @@ a.product__text {
     border: none;
   }
 }
+
+/* ============================================
+   CHIRALLE — Custom Product Page Design
+   Inspired by Saki editorial aesthetic
+   Black & white, clean, premium kitchen brand
+   ============================================ */
+
+/* --- Global font override for product page --- */
+product-info,
+product-info *,
+.product__info-wrapper,
+.product__info-wrapper * {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- Layout: full-bleed, no page padding on media --- */
+.product.grid {
+  gap: 0;
+  align-items: start;
+}
+
+@media screen and (min-width: 990px) {
+  .product--large:not(.product--no-media) .product__media-wrapper {
+    max-width: 58%;
+    width: calc(58% - 0px);
+    padding-right: 0;
+  }
+
+  .product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: 42%;
+    width: calc(42% - 0px);
+    padding: 0 4rem 0 5rem;
+  }
+}
+
+/* --- Product images: clean, no borders, no shadows --- */
+.product__media-item .media {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: #f8f8f8;
+}
+
+.product__media-list .product__media-item + .product__media-item {
+  margin-top: 6px;
+}
+
+/* --- Sticky info panel --- */
+.product__column-sticky {
+  top: 4rem;
+}
+
+/* --- Vendor / brand text --- */
+.product__text.caption-with-letter-spacing {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.8rem;
+}
+
+/* --- Product title --- */
+.product__title h1,
+.product__title .h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #0a0a0a;
+  margin: 0 0 1.6rem 0;
+}
+
+@media screen and (min-width: 750px) {
+  .product__title h1,
+  .product__title .h1 {
+    font-size: 3rem;
+  }
+}
+
+/* --- Price --- */
+.price--large .price-item--regular,
+.price--large .price-item--sale {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+}
+
+.price--large .price-item--regular.price-item--last {
+  text-decoration: line-through;
+  color: #999;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+/* --- Divider lines between info blocks --- */
+.product__info-container > * + * {
+  margin: 2rem 0;
+  padding-top: 0;
+}
+
+#price-{{ section.id }} {
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 1.8rem 0;
+  margin: 0 0 2rem 0;
+}
+
+/* --- Variant picker --- */
+.product-form__input .form__label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin-bottom: 1rem;
+}
+
+/* Variant pills */
+.variant-input-wrapper .btn {
+  border-radius: 0 !important;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border: 1px solid #d0d0d0;
+  padding: 0.8rem 1.6rem;
+  transition: all 0.15s ease;
+}
+
+.variant-input-wrapper input:checked + .btn,
+.variant-input-wrapper input:checked ~ label {
+  border-color: #0a0a0a;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* --- Quantity input --- */
+.quantity__input {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 0 !important;
+  border-color: #d0d0d0;
+}
+
+.quantity__button {
+  border-radius: 0 !important;
+}
+
+/* --- Add to cart button --- */
+.product-form__submit {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 !important;
+  height: 5.4rem;
+  min-height: 5.4rem;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.product-form__submit:hover:not([disabled]):not([aria-disabled='true']) {
+  background: #2a2a2a !important;
+  opacity: 1 !important;
+}
+
+.product-form__submit[aria-disabled='true'],
+.product-form__submit[disabled] {
+  background: #c0c0c0 !important;
+  cursor: not-allowed;
+}
+
+/* Dynamic checkout button */
+.shopify-payment-button__button--unbranded {
+  border-radius: 0 !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* --- Trust badges --- */
+.chiralle-trust-badges {
+  display: flex;
+  gap: 0;
+  border: 1px solid #e8e8e8;
+  margin-top: 2rem;
+}
+
+.chiralle-trust-badge {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.4rem 0.8rem;
+  text-align: center;
+  border-right: 1px solid #e8e8e8;
+}
+
+.chiralle-trust-badge:last-child {
+  border-right: none;
+}
+
+.chiralle-trust-badge svg {
+  color: #0a0a0a;
+  flex-shrink: 0;
+}
+
+.chiralle-trust-badge span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #0a0a0a;
+  line-height: 1.3;
+}
+
+/* --- Product description --- */
+.product__description.rte {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.45rem;
+  line-height: 1.7;
+  color: #444;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+/* --- Accordion (collapsible tabs) --- */
+.product__accordion details summary {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-top: 1px solid #e8e8e8;
+  padding: 1.6rem 0;
+}
+
+.product__accordion details[open] summary {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.product__accordion .accordion__content {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: #555;
+  padding: 1.6rem 0;
+}
+
+.product__accordion .accordion__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* --- Share button --- */
+.share-button {
+  border-top: 1px solid #e8e8e8;
+  padding-top: 1.6rem;
+  margin-top: 0;
+}
+
+/* --- Tax/shipping note --- */
+.product__tax {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* --- Related products heading --- */
+.related-products h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* --- Mobile adjustments --- */
+@media screen and (max-width: 749px) {
+  .product__title h1,
+  .product__title .h1 {
+    font-size: 2.2rem;
+  }
+
+  .chiralle-trust-badges {
+    flex-wrap: nowrap;
+  }
+
+  .chiralle-trust-badge span {
+    font-size: 0.95rem;
+  }
+
+  .product-form__submit {
+    height: 5rem;
+    min-height: 5rem;
+  }
+}
