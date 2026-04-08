@@ -1535,51 +1535,124 @@ product-info .product__media-wrapper {
   overflow: hidden;
 }
 
-product-info .product__media-container {
-  height: 100%;
+/* Media gallery fills the sticky panel as a flex column */
+product-info media-gallery {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
-product-info .product__media-list {
+product-info .product__media-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  height: 100%;
   padding: 0;
+  overflow: hidden;
+}
+
+/* HORIZONTAL SLIDER — each slide is full width */
+product-info .product__media-list {
+  flex: 1;
+  display: flex;
+  flex-direction: row !important;
+  gap: 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
   width: 100% !important;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
+product-info .product__media-list::-webkit-scrollbar { display: none; }
 
 product-info .product__media-item {
+  flex: 0 0 100% !important;
   width: 100% !important;
   max-width: 100% !important;
-  padding: 0;
+  height: 100%;
+  scroll-snap-align: start;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
 }
 
-product-info .product__media-item .media,
-product-info .product__media-item .media > *,
-product-info .product__media-item .media img,
-product-info slider-component,
-product-info .slider {
+product-info .product__media-item .media {
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   background: #141414 !important;
-  display: block;
   width: 100%;
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+product-info .product__media-item .media > * {
+  background: #141414 !important;
 }
 
 product-info .product__media-item img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: contain;
-  mix-blend-mode: normal;
+  display: block;
 }
 
-/* Slider nav */
+/* THUMBNAIL STRIP at bottom of dark panel */
+product-info .thumbnail-slider {
+  flex: 0 0 auto;
+  background: #141414;
+  padding: 1.2rem 2rem 1.8rem;
+}
+
+product-info .thumbnail-list {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+product-info .thumbnail-list::-webkit-scrollbar { display: none; }
+
+product-info .thumbnail-list__item { flex: 0 0 auto; }
+
+product-info .thumbnail {
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0.45;
+  border: 1.5px solid transparent;
+  transition: opacity 0.15s, border-color 0.15s;
+  background: #1e1e1e !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+product-info .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+product-info .thumbnail[aria-current="true"],
+product-info .thumbnail:hover {
+  opacity: 1;
+  border-color: rgba(255,255,255,0.6);
+}
+
+/* Hide prev/next arrows (thumbnails handle navigation) */
 product-info .slider-buttons {
   display: none;
 }
@@ -2047,45 +2120,55 @@ product-info .product__inventory {
     max-width: 100%;
     width: 100%;
     position: relative;
-    height: 70vw;
+    height: 72vw;
     min-height: 360px;
     overflow: hidden;
     background: #141414 !important;
   }
 
-  product-info .product__media-container {
+  product-info media-gallery {
     height: 100%;
+  }
+
+  product-info .product__media-container {
+    height: calc(100% - 7rem); /* leave space for thumbnail strip */
     justify-content: center;
     align-items: center;
     background: #141414 !important;
+    flex: unset;
+  }
+
+  product-info .product__media-item {
+    padding: 2rem;
+    height: 100%;
   }
 
   product-info .product__media-item img {
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
   }
 
-  /* Dark wrapper, white card slides up */
+  /* Dark wrapper, white card slides up with rounded top corners */
   product-info .product__info-wrapper {
     flex: none;
     max-width: 100%;
     width: 100%;
-    background: #141414;
+    background: #141414 !important;
     padding: 0 !important;
     display: block;
     justify-content: unset;
+    overflow: visible;
   }
 
   product-info .product__info-container {
-    background: #ffffff;
-    margin: 0 1.4rem 1.4rem 1.4rem;
-    padding: 3rem 2.2rem 4rem 2.2rem;
-    border-radius: 1.2rem;
-    margin-top: -2.4rem;
+    background: #ffffff !important;
+    margin: -2.4rem 0 0 0 !important;
+    padding: 3rem 2.2rem 4rem 2.2rem !important;
+    border-radius: 2.4rem 2.4rem 0 0 !important;
     position: relative;
     z-index: 2;
-    box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.22);
   }
 
   product-info .product__title h1,
